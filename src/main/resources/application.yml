@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          azure:
+            issuer-uri: https://login.microsoftonline.com/${azure-tenant}/v2.0
+            user-name-attribute: email
+        registration:
+          microsoft:
+            redirect-uri: "{baseUrl}/api/{action}/oauth2/code/{registrationId}"
+            provider: azure
+            scope:
+              - openid
+              - email
+              - profile
+logging:
+  level:
+    sql: debug
+
